@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function letterFinder(word, match) {
+        var condition1 = typeof (word) == "string" && word.length >= 2;
+        var condition2 = typeof (match) == "string" && match.length == 1;
+        //truthy statement. do not need condition1 == true
+        if (condition1 && condition2) {
+            for (i = 0; i < word.length; i++) {
+                //looking through the word for a match
+                if (word[i] == match) {
+                    console.log('Found the', match, 'at', i)
+                } else {
+                    console.log('---No match found at', i)
+                }
+            }
+        } else {
+            console.log("Please pass correct arguments to the function")
+        }
+    }
+
+    letterFinder([], []) //please pass correct argument to the function
+    letterFinder("cat", "c")//found c at 0
+
+</script>
+
+</html>

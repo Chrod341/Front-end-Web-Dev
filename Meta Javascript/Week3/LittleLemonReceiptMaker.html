@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+
+    <title>Title</title>
+  </head>
+
+  <body>
+    <div class="container"></div>
+
+    <script>
+      const dishData = [
+        {
+          name: "Italian pasta",
+          price: 9.55,
+        },
+        {
+          name: "Rice with veggies",
+          price: 8.65,
+        },
+        {
+          name: "Chicken with potatoes",
+          price: 15.55,
+        },
+        {
+          name: "Vegetarian Pizza",
+          price: 6.45,
+        },
+      ];
+      const tax = 1.2;
+      function getPrices(taxBoolean) {
+        // for in loop
+        for (objItem in dishData) {
+          var finalPrice;
+          // if true
+          if (taxBoolean) {
+            finalPrice = dishData[objItem].price * tax;
+            // after statement, but still inside the loop. console log
+            console.log(
+              "Dish: " + dishData[objItem].name + " Price: $" + finalPrice
+            );
+          }
+          // if not true
+          else if (taxBoolean == false) {
+            finalPrice = dishData[objItem].price;
+            console.log(
+              "Dish: " + dishData[objItem].name + " Price: $" + finalPrice
+            );
+          } else {
+            console.log("You need to pass a boolean to the getPrices call!");
+            break;
+          }
+        }
+      }
+      function getDiscount(taxBoolean, guests) {
+        getPrices(taxBoolean);
+        var subCondition =
+          typeof guests == "number" && guests > 0 && guests < 30;
+        // made a substitude condition instead of writing all of it inside the if statement
+        if (subCondition) {
+          var discount = 0;
+          if (guests < 5) discount = 5;
+          else if (guests >= 5) {
+            discount = 10;
+          }
+          console.log("Discount is: $" + discount);
+        } else
+          console.log("The second argument must be a number between 0 and 30");
+      }
+
+      getDiscount(true, 2);
+      getDiscount(false, 10);
+    </script>
+  </body>
+</html>
